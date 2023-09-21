@@ -2,3 +2,4 @@ gql[all]
 matplotlib
 click
 columnar
+Jinja2

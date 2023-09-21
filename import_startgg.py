@@ -4,6 +4,7 @@ import os
 from pprint import pprint
 from gql import Client, gql
 from gql.transport.aiohttp import AIOHTTPTransport
+from pathlib import Path
 
 config = json.load(open("config.json"))
 
@@ -17,6 +18,11 @@ transport = AIOHTTPTransport(**options)
 client = Client(transport=transport, fetch_schema_from_transport=True)
 
 tournaments = json.load(open("tournaments.json"))
+
+try:
+  os.mkdir("data")
+except:
+  pass
 
 for slug in tournaments:
     print(slug)
@@ -58,5 +64,6 @@ tournament(slug: \"""" + slug + """\") {
     )
 
     events = client.execute(query)
-    json.dump(events, open(filename, "w"))
+    path = Path(filename)
+    json.dump(events, open(path, "w"))
     print("saved")

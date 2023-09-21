@@ -1,0 +1,21 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table {
+    margin: auto;
+}
+
+.right {
+    text-align: right;
+}
+
+th {
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: bold;
+ }
+
+td,th {
+    padding: 2px 10px;
+}

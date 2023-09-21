@@ -1,2 +1,4 @@
 data/*.json
 config.json
+.ipynb_checkpoints
+output.html
