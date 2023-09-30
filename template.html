@@ -6,26 +6,60 @@
 </head>
 
 <body>
-    <table>
-        <th>Rank</th>
-        <th>Pseudo</th>
-        <th>Elo</th>
-        <th>WR</th>
-        <th>W</th>
-        <th>L</th>
-        <th>S</th>
-        {%for (rank, player_stats) in ranking %}
-        <tr>
-            <td class="right">{{rank}}</td>
-            <td>{{player_stats.last_pseudo}}</td>
-            <td class="right" class="right">{{"%.2f"|format(player_stats.elo)}}</td>
-            <td class="right">{{"%.2f"|format(player_stats.winrate()*100)}}%</td>
-            <td class="right">{{player_stats.wins}}</td>
-            <td class="right">{{player_stats.loses}}</td>
-            <td class="right">{{player_stats.wins + player_stats.loses}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h1>Weekly Jura Smash 1-19</h1>
+    <h4>
+        Power Ranking
+    </h4>
+    <div class="center">
+        <img src="jura.png" />
+        <table>
+            <th>Rank</th>
+            <th>Pseudo</th>
+            <th>Elo</th>
+            <th>WR</th>
+            <th>W</th>
+            <th>L</th>
+            <th>S</th>
+            {%for (rank, player_stats) in ranking %}
+            <tr>
+                <td class="right">{{rank}}</td>
+                <td>{{player_stats.last_pseudo}}</td>
+                <td class="right" class="right">{{"%.0f"|format(player_stats.elo)}}</td>
+                <td class="right">{{"%.1f"|format(player_stats.winrate()*100)}}%</td>
+                <td class="right">{{player_stats.wins}}</td>
+                <td class="right">{{player_stats.loses}}</td>
+                <td class="right">{{player_stats.wins + player_stats.loses}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h4>
+        General stats / Methodology:
+    </h4>
+    <ul>
+        <li>
+            Elo Avg (Ranked player) : {{mean}}
+        </li>
+        <li>
+            Elo Stdev (Ranked player) : {{stdev}}
+        </li>
+        <li>
+            {{total_sets}} sets analysed
+        </li>
+        <li>
+            {{total_players}} different players participated to Jura Smash
+        </li>
+        <li>
+            You need at least {{minimal_sets}} sets to be in the Jura Smash Ranking
+        </li>
+        <li>
+            Elo algorithm parameters: (K={{K}}, InitialElo={{initial_elo}})
+        </li>
+        <li>
+            <a href="https://github.com/TheRaphael0000/jura_smash_pr">Source code</a>
+        </li>
+    </ul>
 </body>
 
 </html>
