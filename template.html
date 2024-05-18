@@ -3,16 +3,18 @@
 <head>
     <title>PR Jura Smash</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <h1>Weekly Jura Smash 1-19</h1>
-    <h4>
-        Power Ranking
-    </h4>
+    <img src="jura.png" />
+    <h1>Jura Smash (K={{K}}, meanError={{"%.3f"|format(meanError)}})</h1>
+    <h4>Power Ranking</h4>
     <div class="center">
-        <img src="jura.png" />
-        <table>
+        <table class="ranking">
             <th>Rank</th>
             <th>Pseudo</th>
             <th>Elo</th>
@@ -20,6 +22,7 @@
             <th>W</th>
             <th>L</th>
             <th>S</th>
+            <th>P</th>
             {%for (rank, player_stats) in ranking %}
             <tr>
                 <td class="right">{{rank}}</td>
@@ -29,36 +32,49 @@
                 <td class="right">{{player_stats.wins}}</td>
                 <td class="right">{{player_stats.loses}}</td>
                 <td class="right">{{player_stats.wins + player_stats.loses}}</td>
+                <td class="right">{{player_stats.participations()}}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
 
-    <h4>
-        General stats / Methodology:
-    </h4>
+    <h4>Legend</h4>
+    <table class="legend">
+        <tr>
+            <td>WR</td>
+            <td>Winrate (Win / Sets)</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>Sets won</td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>Sets lost</td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>Sets played</td>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>Participations</td>
+        </tr>
+    </table>
+
+    <h4>General stats</h4>
     <ul>
-        <li>
-            Elo Avg (Ranked player) : {{mean}}
-        </li>
-        <li>
-            Elo Stdev (Ranked player) : {{stdev}}
-        </li>
-        <li>
-            {{total_sets}} sets analysed
-        </li>
-        <li>
-            {{total_players}} different players participated to Jura Smash
-        </li>
-        <li>
-            You need at least {{minimal_sets}} sets to be in the Jura Smash Ranking
-        </li>
-        <li>
-            Elo algorithm parameters: (K={{K}}, InitialElo={{initial_elo}})
-        </li>
-        <li>
-            <a href="https://github.com/TheRaphael0000/jura_smash_pr">Source code</a>
-        </li>
+        <li>Elo Avg±Stdev (Ranked player) : {{mean}}±{{stdev}}</li>
+        <li>{{total_slugs}} weekly analysed</li>
+        <li>{{total_sets}} sets analysed</li>
+        <li>{{total_players}} different players in the corpus</li>
+    </ul>
+    <h4>Methodology</h4>
+    <ul>
+        {# <li>You need at least {{minimal_sets}} sets and have at least {{minimal_elo}} Elo to be in the Jura Smash
+            Ranking</li> #}
+        <li>Elo algorithm parameters: (K={{K}}, InitialElo={{initial_elo}})</li>
+        <li><a href="https://github.com/TheRaphael0000/jura_smash_pr">Source code on GitHub</a></li>
     </ul>
 </body>
 

@@ -1,17 +1,33 @@
 html {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "left_handed_girlfriend";
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: left_handed_girlfriend;
+    src: url(fonts/left_handed_girlfriend.otf);
 }
 
 body {
     margin: auto;
+    margin-top: 40px;
     width: 800px;
     font-size: 1.1em;
 }
 
-table {
+.ranking {
     display: inline-block;
     margin: auto;
     border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "B612 Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.legend {
+    margin: auto;
 }
 
 .right {
@@ -31,6 +47,7 @@ th {
 
 img {
     display: inline-block;
+    position: fixed;
     margin-left: -350px;
     margin-right: 50px;
     width: 300px;
@@ -46,9 +63,10 @@ th {
 h1,
 h4 {
     text-align: center;
+    margin: 5px;
 }
 
-tbody tr:nth-child(even) {
+.ranking tbody tr:nth-child(even) {
     background-color: #e8423fe3;
     color: white;
 }

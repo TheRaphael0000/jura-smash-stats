@@ -20,9 +20,9 @@ client = Client(transport=transport, fetch_schema_from_transport=True)
 tournaments = json.load(open("tournaments.json"))
 
 try:
-  os.mkdir("data")
+    os.mkdir("data")
 except:
-  pass
+    pass
 
 for slug in tournaments:
     print(slug)
