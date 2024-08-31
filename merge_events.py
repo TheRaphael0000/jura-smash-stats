@@ -2,7 +2,7 @@ import json
 import glob
 import click
 
-jsons = glob.glob("data/jura*.json")
+jsons = glob.glob("data/jura*.json") + glob.glob("data/game*.json")
 outputfile = "data/all_sets.json"
 
 sets = []
@@ -32,6 +32,10 @@ for j in jsons:
         valid_event_sets = [s for s in event_sets if s["winnerId"] is not None]
         invalid_event_sets = [s for s in event_sets if s["winnerId"] is None]
 
+        if (len(invalid_event_sets) > 0):
+            print(tournament_slug)
+            print(event_name)
+            print(invalid_event_sets)
         # if click.confirm(f"Keep '{tournament_name}'/'{event_name}' {len(event_sets)} ?"):
         sets.extend(valid_event_sets)
 
